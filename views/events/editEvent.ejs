@@ -1,0 +1,81 @@
+<%include ../partials/header%>
+<br/>
+<div class="modal-dialog">
+		<div class="modal-content">
+			
+			<hr />
+			<div class="modal-body">
+				<form action="/events/edit/<%=event._id%>" style="background-color:gray" method="post" role="form" >
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon">
+							<span class="glyphicon glyphicon-user"></span>
+							</span>
+							<input type="text" name="id" class="form-control" placeholder="ID" value="<%=event._id%>" disabled />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon">
+							<span class="glyphicon glyphicon-lock"></span>
+							</span>
+							<input type="text" name="title" value="<%=event.title%>" class="form-control" placeholder="Title" />
+
+						</div>
+
+                    </div>
+                    <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                                </span>
+							   main speaker
+							   <select name="mainSpeaker">
+                               <%speakers.forEach((speaker)=>{%>
+                                  <% if (event.mainSpeaker._id == speakers._id){%>
+                                    <option selected value="<%=speaker._id%>"><%=speaker.name%></option>
+                                  <%}else{%>  
+                                  
+                                    <option value="<%=speaker._id%>"><%=speaker.name%></option>
+
+                                  <%}%>
+							   <%})%>
+							</select>
+							  
+                            </div>
+    
+						</div>
+					</div>
+                    <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                                </span>
+								others
+								<select name="otherSpeakers" multiple>
+										<%speakers.forEach((speaker)=>{%>
+                                             <!-- <option value="<%=speaker._id%>"><%=speaker.name%></option> -->
+                                             <% if (event.otherSpeakers.filter((sp)=> sp._id == speaker._id).length >0){%>
+                                                <option selected value="<%=speaker._id%>"><%=speaker.name%></option>
+                                              <%}else{%>  
+                                              
+                                                <option value="<%=speaker._id%>"><%=speaker.name%></option>
+            
+                                              <%}%>
+										<%})%>
+									 </select>
+								
+                            </div>
+    
+                        </div>
+
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-success btn-lg" >Add</button>
+						
+					</div>
+
+                </form>
+               
+			</div>
+		</div>
+	</div>

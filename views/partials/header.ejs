@@ -1,0 +1,49 @@
+<html>
+    <head>
+            <script src="/jquery.js"></script>
+            <script src="/js/bootstrap.js"></script>
+            <link rel="stylesheet" href="/css/bootstrap.css"/>
+            
+
+
+    </head>
+    <body>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                     <% if (userName == "wafik") {%>
+
+                    <a class="navbar-brand" href="#">Administrator</a>
+                    <%} else {%>
+                      <a class="navbar-brand" href="#">Speaker</a>
+                    <%}%>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                          <% if (userName == "wafik") {%>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/speaker/list">speakers <span class="sr-only">(current)</span></a>
+                        </li>
+                       
+                        <li class="nav-item">
+                                <a class="nav-link " href="/events/add">add event</a>
+                              </li>
+                        <li class="nav-item">
+                          <a class="nav-link " href="/events/list">events</a>
+                        </li>
+                        <%}%>
+                      </ul>
+                      <form class="form-inline my-2 my-lg-0">
+                            <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                    <a class="nav-link " href="/logout">logout</a>
+                            </li>
+                       </ul>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Welcome <%= userName%> </button>
+                      </form>
+                    </div>
+                  </nav>
+                  <body style="background-color: beige">
+  

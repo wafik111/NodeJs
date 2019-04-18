@@ -1,0 +1,48 @@
+<%include ../partials/header%>
+
+<p> welcome speaker </p>
+<img src="/<%=speaker.avatar%>" class="img-thumbnail"/>
+
+
+<% if (events  != ""){%>
+<table class="table table-dark">
+    <thead>
+        
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">title</th>
+        <th scope="col">mainspeaker</th>
+        <th scope="col">otherspeakers</th>
+
+      </tr>
+    </thead>
+    <tbody>
+     <%events.forEach((event)=>{%>
+        <tr>
+          <td><%=event._id%></td>
+          <td><%=event.title%></td>
+          <% if (event.mainSpeaker){%>
+            <td><%=event.mainSpeaker.name%></td>
+
+          <%}%>
+          <td>
+            <ul>
+              <%event.otherSpeakers.forEach((otherSpeaker)=>{%>
+                  <li><%=otherSpeaker.name%></li>
+              <%})%>
+            </ul>
+          </td>
+         
+
+
+        </tr>
+     <%})%>
+     
+    </tbody>
+  </table>
+  <%}else{%>
+  </br>
+  
+    <p class="alert alert-warning ">you dont have any Events .....</p>
+  <%}%>
+<%include ../partials/footer%>
